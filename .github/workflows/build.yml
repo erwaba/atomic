@@ -27,8 +27,7 @@ jobs:
       matrix:
         recipe:
           # !! Add your recipes here
-          - recipe_aurora.yml
-          - recipe_bazzite.yml
+          - recipe_bazzite_laptop.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
