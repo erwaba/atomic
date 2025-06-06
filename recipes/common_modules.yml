@@ -4,4 +4,5 @@ modules:
   - type: dnf
     install:
       packages:
+# for backups
         - restic
