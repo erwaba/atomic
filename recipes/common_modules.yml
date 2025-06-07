@@ -6,3 +6,5 @@ modules:
       packages:
 # for backups
         - restic
+# for mounting networked drives
+        - autofs
