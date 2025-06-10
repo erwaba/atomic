@@ -9,3 +9,5 @@ modules:
         - autorestic
 # for mounting networked drives
         - autofs
+# testing only
+        - cockpit
