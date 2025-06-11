@@ -23,5 +23,7 @@ modules:
     - RUN sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,org.kde.discover.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml
 # reverse Bazzite's decision to autostart Steam by placing it in /etc/skel
     - RUN rm /etc/skel/.config/autostart/steam.desktop
-
-
+# include containerfile that installs resticprofile
+   - type: containerfile
+     containerfiles:
+      - resticprofile
