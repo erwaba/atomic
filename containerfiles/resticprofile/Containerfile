@@ -1,5 +1,10 @@
-RUN curl -Lo /tmp/resticprofile.tar.gz $(curl https://api.github.com/repos/creativeprojects/resticprofile/releases/latest | jq -r '.assets[] | select(.name| test("linux_amd64") and (test("no_self_update") | not)).browser_download_url') && \
+RUN --mount=type=cache,dst=/var/cache \
+    --mount=type=cache,dst=/var/log \
+    --mount=type=bind,from=ctx,source=/,target=/ctx \
+    --mount=type=tmpfs,dst=/tmp \
+    curl -Lo /tmp/resticprofile.tar.gz $(curl https://api.github.com/repos/creativeprojects/resticprofile/releases/latest | jq -r '.assets[] | select(.name| test("linux_amd64") and (test("no_self_update") | not)).browser_download_url') && \
     mkdir -p /tmp/resticprofile && \
     tar --no-same-owner --no-same-permissions --no-overwrite-dir -xvzf /tmp/resticprofile.tar.gz -C /tmp/resticprofile && \
     rm -f /tmp/resticprofile.tar.gz && \
     cp -r /tmp/resticprofile/resticprofile /usr/bin/ && \
+    /ctx/cleanup
