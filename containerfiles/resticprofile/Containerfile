@@ -5,5 +5,5 @@ RUN --mount=type=cache,dst=/var/cache \
     mkdir -p /tmp/resticprofile && \
     tar --no-same-owner --no-same-permissions --no-overwrite-dir -xvzf /tmp/resticprofile.tar.gz -C /tmp/resticprofile && \
     rm -f /tmp/resticprofile.tar.gz && \
-    cp -r /tmp/resticprofile/resticprofile /usr/bin/ && \
+    cp -r /tmp/resticprofile/resticprofile /usr/bin/
 
