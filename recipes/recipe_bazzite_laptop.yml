@@ -24,6 +24,6 @@ modules:
 # reverse Bazzite's decision to autostart Steam by placing it in /etc/skel
     - RUN rm /etc/skel/.config/autostart/steam.desktop
 # include containerfile that installs resticprofile
-   - type: containerfile
-     containerfiles:
+  - type: containerfile
+    containerfiles:
       - resticprofile
