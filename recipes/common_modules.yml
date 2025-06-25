@@ -10,3 +10,6 @@ modules:
         - autofs
 # testing only
         - cockpit
+# install starship and set as default for all users
+ - type: script
+   scripts: starship.sh
