@@ -12,4 +12,5 @@ modules:
         - cockpit
 # install starship and set as default for all users
   - type: script
-    scripts: starship.sh
+    scripts:
+    - starship.sh
