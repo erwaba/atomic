@@ -12,5 +12,6 @@ curl --retry 3 -Lo /tmp/starship.tar.gz "https://github.com/starship/starship/re
 tar -xzf /tmp/starship.tar.gz -C /tmp
 install -c -m 0755 /tmp/starship /usr/bin
 # shellcheck disable=SC2016
-echo 'eval "$(starship init bash)"' >>/etc/bashrc
+# not activating this by default for all users
+#echo 'eval "$(starship init bash)"' >>/etc/bashrc
 
