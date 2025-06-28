@@ -8,8 +8,6 @@ modules:
         - restic
 # for mounting networked drives
         - autofs
-# testing only
-        - cockpit
 # install starship and set as default for all users
   - type: script
     scripts:
