@@ -18,9 +18,9 @@ modules:
   - type: containerfile
     snippets:
 # reverse Bazzite's inclusion of Steam and Lutris as pinned apps on the Taskbar; other apps could also be added here
-    - RUN sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:org.gnome.Ptyxis.desktop,applications:org.kde.discover.desktop,applications:org.keepassxc.KeePassXC.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
+    - RUN sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:org.gnome.Ptyxis.desktop,applications:org.kde.discover.desktop,applications:org.keepassxc.KeePassXC.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
 # reverse Bazzite's inclusion of Steam and Lutris as favorites; other apps could also be added here
-    - RUN sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,org.kde.discover.desktop,org.keepassxc.KeePassXC.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml
+    - RUN sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,org.kde.discover.desktop,org.keepassxc.KeePassXC.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml
 # reverse Bazzite's decision to autostart Steam by placing it in /etc/skel
     - RUN rm /etc/skel/.config/autostart/steam.desktop
 # include containerfile that installs resticprofile
