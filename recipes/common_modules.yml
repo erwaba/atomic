@@ -8,6 +8,8 @@ modules:
         - restic
 # for mounting networked drives
         - autofs
+# for burning CDs/DVDs
+        - k3b
 # install starship and set as default for all users
   - type: script
     scripts:
