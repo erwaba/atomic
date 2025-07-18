@@ -10,6 +10,8 @@ modules:
         - autofs
 # for burning CDs/DVDs
         - k3b
+# for connecting to mobile devices
+        - libimobiledevice
 # install starship and set as default for all users
   - type: script
     scripts:
