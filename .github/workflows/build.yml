@@ -28,6 +28,8 @@ jobs:
         recipe:
           # !! Add your recipes here
           - recipe_bazzite_laptop.yml
+          - recipe_gaming_desktop_AMD.yml
+          - recipe_gaming_desktop_NVIDIA.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
