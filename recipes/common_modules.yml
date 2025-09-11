@@ -12,7 +12,7 @@ modules:
         - k3b
 # for connecting to mobile devices
         - libimobiledevice
-# install starship and set as default for all users
+# install starship (but do not set as default for any users)
   - type: script
     scripts:
     - starship.sh
