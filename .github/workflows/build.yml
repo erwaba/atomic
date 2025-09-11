@@ -30,6 +30,7 @@ jobs:
           - recipe_bazzite_laptop.yml
           - recipe_gaming_desktop_AMD.yml
           - recipe_gaming_desktop_NVIDIA.yml
+          - recipe_ucore_baremetal.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Build Custom Image

@@ -1,0 +1,32 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+# image will be published to ghcr.io/<user>/<name>
+name: ucore_baremetal
+# description will be included in the image's metadata
+description: Ucore image for baremetal servers.
+
+# the base image to build on top of (FROM) and the version tag to use
+base-image: ghcr.io/ublue-os/ucore
+image-version: stable # latest is also supported if you want new updates ASAP
+
+# module configuration, executed in order
+# you can include multiple instances of the same module
+
+# NOTE: this recipe does not use the common_modules recipe
+modules:
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: dnf
+    install:
+      packages:
+# for backups
+        - restic
+# for container and VM management
+        - incus
+# install starship (but do not set as default for any users)
+  - type: script
+    scripts:
+    - starship.sh
+# include containerfile that installs resticprofile
+  - type: containerfile
+    containerfiles:
+      - resticprofile
