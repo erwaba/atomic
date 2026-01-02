@@ -23,7 +23,12 @@ modules:
   - type: containerfile
     containerfiles:
       - resticprofile
-# copy gaming monitor EDID
+# copy gaming monitor EDID and dracut conf to include in initramfs
   - type: files
     files:
-      - usr: /usr
+      - source: edid/monitor.edid
+        destination: /usr/lib/firmware/edid/monitor.edid
+      - source: dracut/edid.conf
+        destination: /etc/dracut.conf.d/edid.conf
+# trigger regeneration of initramfs to include new files (requires Fedora 41+)
+  - type: initramfs
