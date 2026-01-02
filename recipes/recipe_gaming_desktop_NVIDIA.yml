@@ -33,6 +33,9 @@ modules:
 # inject kernel argument into image build
   - type: kargs
     kargs:
+      - nvidia-drm.modeset=1
+      - video=DP-1:e  # forces port to be active
+      - rd.driver.pre=nvidia  # forces driver to wait for initramfs to be ready before handshake
       - drm.edid_firmware=DP-1:edid/monitor.edid
 # trigger regeneration of initramfs to include new files (requires Fedora 41+)
   - type: initramfs
