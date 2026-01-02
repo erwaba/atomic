@@ -32,7 +32,7 @@ modules:
         destination: /etc/dracut.conf.d/edid.conf
 # inject kernel argument into image build
   - type: kargs
-    args:
+    kargs:
       - drm.edid_firmware=DP-1:edid/monitor.edid
 # trigger regeneration of initramfs to include new files (requires Fedora 41+)
   - type: initramfs
