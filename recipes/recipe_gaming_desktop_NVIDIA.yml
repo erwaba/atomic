@@ -23,3 +23,7 @@ modules:
   - type: containerfile
     containerfiles:
       - resticprofile
+# copy gaming monitor EDID
+  - type: files
+    files:
+      - usr: /usr
