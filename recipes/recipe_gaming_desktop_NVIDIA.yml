@@ -24,8 +24,8 @@ modules:
     containerfiles:
       - resticprofile
 # copy gaming monitor EDID and dracut conf to include in initramfs
-  - type: files
-    files:
+#  - type: files
+#    files:
   #    - source: edid/monitor.edid
   #      destination: /usr/lib/firmware/edid/monitor.edid
   #    - source: dracut/edid.conf
