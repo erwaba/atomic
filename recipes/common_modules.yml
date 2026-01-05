@@ -12,6 +12,10 @@ modules:
         - k3b
 # for connecting to mobile devices
         - libimobiledevice
+# for dotfile management
+        - chezmoi
+# required by Winboat (when using podman)        
+        - podman-compose
 # install starship (but do not set as default for any users)
   - type: script
     scripts:
