@@ -14,9 +14,9 @@ modules:
         - libimobiledevice
 # for dotfile management
         - chezmoi
-# required by Winboat (when using podman)        
+# required by Winboat (when using podman)
         - podman-compose
 # install starship (but do not set as default for any users)
-  - type: script
-    scripts:
-    - starship.sh
+#  - type: script
+#    scripts:
+#    - starship.sh
