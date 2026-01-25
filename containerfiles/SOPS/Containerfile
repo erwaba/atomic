@@ -1,5 +1,8 @@
+ARG SOPS_VERSION=3.11.0
+
+# apparently, /usr/local/bin doesn't persist, so we use /usr/bin
 RUN --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    curl -Lo /usr/local/bin/sops https://github.com/getsops/sops/releases/download/v3.11.0/sops-v3.11.0.linux.amd64 \
-    && chmod +x /usr/local/bin/sops
+    curl -Lo /usr/bin/sops "https://github.com/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64" \
+    && chmod +x /usr/bin/sops
