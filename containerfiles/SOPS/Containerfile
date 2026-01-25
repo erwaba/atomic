@@ -4,5 +4,12 @@ ARG SOPS_VERSION=3.11.0
 RUN --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    curl -Lo /usr/bin/sops "https://github.com/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64" \
-    && chmod +x /usr/bin/sops
+    # -fsSL will fail on HTTP errors (so a 404 would fail the build)
+    curl -fsSL -o /usr/bin/sops "https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64" \
+    # ensure file not empty
+    && test -s /usr/bin/sops \
+    # verify it is a binary
+    && file /usr/bin/sops | grep -q "ELF 64-bit LSB executable" \
+    && chmod +x /usr/bin/sops \
+    # verify it runs and outputs expected version
+    && /usr/bin/sops --version | grep -q "${SOPS_VERSION}"
