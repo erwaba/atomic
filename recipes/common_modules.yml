@@ -17,7 +17,9 @@ modules:
 # required by Winboat (when using podman)
         - podman-compose
 # for container and VM management
-        - incus        
+        - incus
+# for encryption and a SOPS backend
+        - age        
 # install starship (but do not set as default for any users)
 #  - type: script
 #    scripts:
