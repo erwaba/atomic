@@ -19,8 +19,12 @@ modules:
 # for container and VM management
         - incus
 # for encryption and a SOPS backend
-        - age        
+        - age
 # install starship (but do not set as default for any users)
 #  - type: script
 #    scripts:
 #    - starship.sh
+# include containerfile that installs SOPS
+  - type: containerfile
+    containerfiles:
+      - SOPS
