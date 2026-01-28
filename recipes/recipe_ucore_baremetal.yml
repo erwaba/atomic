@@ -22,6 +22,8 @@ modules:
         - restic
 # for container and VM management
         - incus
+# for dotfile management
+        - chezmoi        
 # install starship (but do not set as default for any users)
   - type: script
     scripts:
