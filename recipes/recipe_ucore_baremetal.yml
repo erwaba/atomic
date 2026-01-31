@@ -23,7 +23,9 @@ modules:
 # for container and VM management
         - incus
 # for dotfile management
-        - chezmoi        
+        - chezmoi
+# for network analysis (especially with VLAN and multicast)
+        - tcpdump
 # install starship (but do not set as default for any users)
   - type: script
     scripts:
