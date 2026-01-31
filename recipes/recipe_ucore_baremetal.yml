@@ -22,7 +22,7 @@ modules:
         - restic
 # for container and VM management
         - incus
-        - incus-extra
+        - incus-tools
 # for incus to be able to run VMs
         - qemu
 # for dotfile management
