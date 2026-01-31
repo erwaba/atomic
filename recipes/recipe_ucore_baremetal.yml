@@ -22,6 +22,8 @@ modules:
         - restic
 # for container and VM management
         - incus
+# for incus to be able to run VMs
+        - qemu
 # for dotfile management
         - chezmoi
 # for network analysis (especially with VLAN and multicast)

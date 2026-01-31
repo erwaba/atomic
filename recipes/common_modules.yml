@@ -18,6 +18,8 @@ modules:
         - podman-compose
 # for container and VM management
         - incus
+# for incus to be able to run VMs
+        - qemu
 # for encryption and a SOPS backend
         - age
 # install starship (but do not set as default for any users)
