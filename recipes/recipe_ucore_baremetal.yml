@@ -28,6 +28,8 @@ modules:
         - chezmoi
 # for network analysis (especially with VLAN and multicast)
         - tcpdump
+# for encryption and a SOPS backend
+        - age
 # install starship (but do not set as default for any users)
   - type: script
     scripts:
