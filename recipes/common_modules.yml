@@ -18,6 +18,7 @@ modules:
         - podman-compose
 # for container and VM management
         - incus
+        - incus-extra
 # for incus to be able to run VMs
         - qemu
 # for encryption and a SOPS backend
