@@ -23,6 +23,10 @@ modules:
         - qemu
 # for encryption and a SOPS backend
         - age
+# for reversion to SDDM login manager until hide users feature is added
+        - sddm
+        - sddm-kcm
+        - sddm-wayland-plasma
 # install starship (but do not set as default for any users)
 #  - type: script
 #    scripts:
