@@ -27,6 +27,7 @@ modules:
         - sddm
         - sddm-kcm
         - sddm-wayland-plasma
+        - sddm-breeze
 # install starship (but do not set as default for any users)
 #  - type: script
 #    scripts:
