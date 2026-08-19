@@ -36,7 +36,6 @@ modules:
   - type: containerfile
     containerfiles:
       - SOPS
-  - type: files
 # delete tmpfile that creates/chowns the empty linuxbrew directories each boot (via systemd-tmpfiles-setup.service)
   - type: script
     snippets:
@@ -48,6 +47,7 @@ modules:
         - brew-update.timer
         - brew-upgrade.timer
 # copies uupd conf dropin file disabling timer-driven brew updates to proper location
+  - type: files
     files:
       - source: system
         destination: /
