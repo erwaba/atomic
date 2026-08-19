@@ -36,3 +36,19 @@ modules:
   - type: containerfile
     containerfiles:
       - SOPS
+  - type: files
+# delete tmpfile that creates/chowns the empty linuxbrew directories each boot (via systemd-tmpfiles-setup.service)
+  - type: script
+    snippets:
+      - "rm -f /usr/lib/tmpfiles.d/homebrew.conf"
+# disable services and timers that populate or update the /var/home/linuxbrew directories
+    system:
+      disabled:
+        - brew-setup.service
+        - brew-update.timer
+        - brew-upgrade.timer
+# copies uupd conf dropin file disabling timer-driven brew updates to proper location
+    files:
+      - source: system
+        destination: /
+  - type: systemd
