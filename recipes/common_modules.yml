@@ -41,6 +41,7 @@ modules:
     snippets:
       - "rm -f /usr/lib/tmpfiles.d/homebrew.conf"
 # disable services and timers that populate or update the /var/home/linuxbrew directories
+  - type: systemd
     system:
       disabled:
         - brew-setup.service
