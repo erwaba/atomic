@@ -27,3 +27,13 @@ modules:
   - type: containerfile
     containerfiles:
       - resticprofile
+# REGRESSION WORKAROUND: place ath11k delay servicde and conf override
+  - type: files
+    files:
+      - source: laptop
+        destination: /
+# REGRESSION WORKAROUND: enable delay for ath11k to prevent wifi problems
+  - type: systemd
+    system:
+      enabled:
+        - ath11k-settle.service

@@ -50,6 +50,6 @@ modules:
 # copies uupd conf dropin file disabling timer-driven brew updates to proper location
   - type: files
     files:
-      - source: system
+      - source: commonmodules
         destination: /
   - type: systemd

@@ -1,0 +1,17 @@
+[Unit]
+Description=Delay iwd startup on ath11k WCN6855 (workaround for -ENFILE on NEW_INTERFACE)
+# Workaround: ath11k/WCN6855 NEW_INTERFACE returns "Too many open files in system" on roughly half of boots on kernel 7.1.5-ogc5.1.
+# Problem did not occur, with identical wireless binaries, on kernel 7.0.9, such as pinned 07 JUL 2026 deployment.
+# Remove once fixed upstream.
+Before=iwd.service
+# condition will fail on laptop without ath11k, skipping unit instantly, iwd starts with no delay
+ConditionPathExistsGlob=/sys/bus/pci/drivers/ath11k_pci/*
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/sleep 8
+
+[Install]
+WantedBy=multi-user.target
