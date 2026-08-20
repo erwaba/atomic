@@ -5,13 +5,12 @@ Description=Delay iwd startup on ath11k WCN6855 (workaround for -ENFILE on NEW_I
 # Remove once fixed upstream.
 Before=iwd.service
 # condition will fail on laptop without ath11k, skipping unit instantly, iwd starts with no delay
-ConditionPathExistsGlob=/sys/bus/pci/drivers/ath11k_pci/*
-DefaultDependencies=no
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/sleep 8
+# grep the PCI vendor:device ID pair for T14s wifi card; sleeps 8 only when card is present
+ExecStart=/bin/bash -c 'lspci -nn 2>/dev/null | grep -q "17cb:1103" && sleep 8; exit 0'
 
 [Install]
 WantedBy=multi-user.target
