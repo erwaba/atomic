@@ -40,16 +40,20 @@ modules:
     containerfiles:
       - resticprofile
 # mask numerous Performance Metrics Collector Daemon units, a metrics backend for cockpit that I don't use
-# these units fail because they weren't labeled at uCore build time for SElinux purposes (they have unlabeled_t label)      
+# these units fail because they weren't labeled at uCore build time for SElinux purposes (they have unlabeled_t label)
   - type: systemd
     system:
-      mask:
+      masked:
         - pmcd.service
         - pmlogger.service
         - pmproxy.service
         - pmie.service
         - pmlogger_farm.service
         - pmie_farm.service
+        - pmlogger_check.service
+        - pmlogger_farm_check.service
+        - pmie_check.service
+        - pmie_farm_check.service
         - pmlogger_check.timer
         - pmlogger_farm_check.timer
         - pmie_check.timer
