@@ -35,10 +35,11 @@ modules:
   - type: script
     scripts:
     - starship.sh
-# include containerfile that installs resticprofile
+# include containerfile that installs resticprofile and SOPS
   - type: containerfile
     containerfiles:
       - resticprofile
+      - SOPS
 # mask numerous Performance Metrics Collector Daemon units, a metrics backend for cockpit that I don't use
 # these units fail because they weren't labeled at uCore build time for SElinux purposes (they have unlabeled_t label)
   - type: systemd
