@@ -1,15 +1,19 @@
-ARG SOPS_VERSION=3.11.0
+ARG SOPS_VERSION=3.13.3
 
 # apparently, /usr/local/bin doesn't persist, so we use /usr/bin
 RUN --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
+    BASE="https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}" \
     # -fsSL will fail on HTTP errors (so a 404 would fail the build)
-    curl -fsSL -o /usr/bin/sops "https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64" \
-    # ensure file not empty
-    && test -s /usr/bin/sops \
-    # verify it is a binary
-    && file /usr/bin/sops | grep -q "ELF 64-bit LSB executable" \
-    && chmod +x /usr/bin/sops \
-    # verify it runs and outputs expected version
-    && /usr/bin/sops --version | grep -q "${SOPS_VERSION}"
+    && curl -fsSL -o /usr/bin/sops "${BASE}/sops-v${SOPS_VERSION}.linux.amd64" \
+    # checksum verification
+    && curl -fsSL -o /tmp/sops.sums "${BASE}/sops-v${SOPS_VERSION}.checksums.txt" \
+    # pin the exact artifact hash, then verify the downloaded file
+    && SUM="$(grep "sops-v${SOPS_VERSION}.linux.amd64\$" /tmp/sops.sums | cut -d' ' -f1)" \
+    && test -n "${SUM}" \
+    # sha256sum -c prints OK or FAILED and exits non-zero on mismatch
+    && echo "${SUM}  /usr/bin/sops" | sha256sum -c - \
+    && chmod 0755 /usr/bin/sops \
+    # check it executives on this base image
+    && /usr/bin/sops --disable-version-check --version | grep -q "${SOPS_VERSION}"
